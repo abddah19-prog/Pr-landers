@@ -1,0 +1,417 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Where Winds Meet – Jouez gratuitement</title>
+<meta name="description" content="Plus de 100 millions de joueurs. Entrez dans le monde Wuxia de Where Winds Meet, gratuit sur PC, PS5, Xbox, iOS et Android.">
+<meta property="og:title" content="Where Winds Meet – Plus de 100 millions de joueurs">
+<meta property="og:description" content="RPG d'action Wuxia en monde ouvert. Gratuit, cross-play et cross-progression.">
+<meta property="og:image" content="assets/cover.webp">
+<meta name="theme-color" content="#0b1020">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Cinzel:wght@500;700&family=Noto+Sans:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #0b1020;
+    --ink-2: #131a30;
+    --mist: #cdd6ea;
+    --text: #eef1f8;
+    --muted: #9aa6c2;
+    --gold: #e9c77b;
+    --gold-2: #b8893a;
+    --red: #b3262d;
+    --radius: 14px;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--ink);
+    color: var(--text);
+    font-family: "Noto Sans", system-ui, sans-serif;
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+  a { color: inherit; text-decoration: none; }
+  img, video { display: block; max-width: 100%; }
+
+  /* ---------- Header ---------- */
+  .top {
+    position: fixed; inset: 0 0 auto 0; z-index: 20;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 14px clamp(16px, 4vw, 48px);
+    background: linear-gradient(to bottom, rgba(11,16,32,.85), transparent);
+  }
+  .logo { display: flex; align-items: center; gap: 10px; font-family: "Cinzel", serif; font-weight: 700; letter-spacing: .08em; line-height: 1.05; font-size: 14px; }
+  .logo-mark { font-size: 34px; color: var(--gold); font-family: serif; }
+  .top .btn { padding: 10px 20px; font-size: 14px; }
+
+  /* ---------- Buttons ---------- */
+  .btn {
+    display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+    padding: 16px 38px; border-radius: 999px; border: 0; cursor: pointer;
+    font-family: "Cinzel", serif; font-weight: 700; letter-spacing: .06em; font-size: 18px;
+    color: #1a1206;
+    background: linear-gradient(180deg, #f6e2a8 0%, var(--gold) 45%, var(--gold-2) 100%);
+    box-shadow: 0 0 0 1px rgba(255,235,180,.5) inset, 0 10px 30px rgba(233,199,123,.35);
+    transition: transform .15s ease, box-shadow .2s ease;
+  }
+  .btn:hover { transform: translateY(-2px); box-shadow: 0 0 0 1px rgba(255,235,180,.7) inset, 0 14px 40px rgba(233,199,123,.55); }
+  .btn.pulse { animation: pulse 2.2s infinite; }
+  @keyframes pulse { 0%,100% { box-shadow: 0 0 0 0 rgba(233,199,123,.55), 0 10px 30px rgba(233,199,123,.35);} 50% { box-shadow: 0 0 0 16px rgba(233,199,123,0), 0 10px 30px rgba(233,199,123,.35);} }
+  .btn-ghost { background: transparent; color: var(--text); box-shadow: 0 0 0 1px rgba(238,241,248,.5) inset; }
+  .btn-ghost:hover { box-shadow: 0 0 0 1px var(--gold) inset; color: var(--gold); }
+
+  /* ---------- Hero ---------- */
+  .hero { position: relative; min-height: 100svh; display: grid; place-items: end center; text-align: center; overflow: hidden; }
+  .hero video, .hero .poster { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+  .hero::after {
+    content: ""; position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse at 50% 60%, rgba(11,16,32,.55) 0%, rgba(11,16,32,.2) 75%),
+      linear-gradient(to bottom, rgba(11,16,32,.45) 0%, rgba(11,16,32,.35) 35%, rgba(11,16,32,.75) 70%, var(--ink) 100%);
+  }
+  .hero-inner { position: relative; z-index: 2; padding: 110px 16px 48px; max-width: 1000px; }
+  .kicker { text-shadow: 0 2px 8px rgba(0,0,0,.8); font-weight: 700; font-family: "Cinzel", serif; letter-spacing: .3em; font-size: clamp(12px, 1.6vw, 15px); color: var(--mist); text-transform: uppercase; }
+  .brush {
+    font-family: "Permanent Marker", "Cinzel", cursive; line-height: .95; text-transform: uppercase;
+    font-size: clamp(44px, 9vw, 120px); letter-spacing: .01em;
+  }
+  .brush.gold {
+    background: linear-gradient(180deg, #fff3cf 0%, var(--gold) 45%, var(--gold-2) 100%);
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+    filter: drop-shadow(0 4px 14px rgba(0,0,0,.6));
+  }
+  .brush.dark { color: #dfe6f6; text-shadow: 0 4px 20px rgba(0,0,0,.7); font-size: clamp(30px, 5vw, 64px); }
+  .hero .brush.gold { font-size: clamp(40px, 7vw, 92px); }
+  .hero p.lead { margin: 18px auto 30px; max-width: 620px; color: var(--mist); font-size: clamp(15px, 2vw, 19px); }
+  .hero-cta { display: flex; flex-wrap: wrap; gap: 14px; justify-content: center; }
+  .sound {
+    position: absolute; z-index: 3; right: 16px; bottom: 24px;
+    width: 44px; height: 44px; border-radius: 50%; border: 1px solid rgba(255,255,255,.4);
+    background: rgba(11,16,32,.5); color: #fff; cursor: pointer; font-size: 18px;
+  }
+
+  /* ---------- Platforms ---------- */
+  .platforms { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin-top: 34px; }
+  .platform {
+    padding: 8px 14px; border-radius: 8px; font-size: 13px; font-weight: 600; letter-spacing: .03em;
+    background: rgba(0,0,0,.55); border: 1px solid rgba(255,255,255,.25);
+    transition: border-color .2s, color .2s;
+  }
+  .platform:hover { border-color: var(--gold); color: var(--gold); }
+
+  /* ---------- Sections ---------- */
+  section { padding: clamp(64px, 9vw, 110px) 16px; }
+  .wrap { max-width: 1120px; margin: 0 auto; }
+  .h2 { font-family: "Cinzel", serif; font-size: clamp(26px, 4vw, 42px); text-align: center; letter-spacing: .04em; }
+  .h2 span { color: var(--gold); }
+  .sub { text-align: center; color: var(--muted); margin: 10px auto 44px; max-width: 640px; }
+
+  /* Stats */
+  .stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+  .stat { text-align: center; padding: 22px 10px; border-top: 1px solid rgba(233,199,123,.35); }
+  .stat b { display: block; font-family: "Cinzel", serif; font-size: clamp(26px, 3.6vw, 40px); color: var(--gold); }
+  .stat small { color: var(--muted); font-size: 14px; }
+
+  /* Features */
+  .features { background: linear-gradient(180deg, var(--ink) 0%, var(--ink-2) 100%); }
+  .grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
+  .card {
+    padding: 28px 22px; border-radius: var(--radius);
+    background: linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.015));
+    border: 1px solid rgba(255,255,255,.08);
+    transition: transform .2s, border-color .2s;
+  }
+  .card:hover { transform: translateY(-4px); border-color: rgba(233,199,123,.45); }
+  .card .ico { font-size: 30px; margin-bottom: 12px; }
+  .card h3 { font-family: "Cinzel", serif; font-size: 18px; margin-bottom: 8px; color: var(--gold); }
+  .card p { color: var(--muted); font-size: 15px; }
+
+  /* Showcase */
+  .showcase { display: grid; grid-template-columns: 1.3fr 1fr; gap: 36px; align-items: center; }
+  .frame { position: relative; border-radius: var(--radius); overflow: hidden; border: 1px solid rgba(233,199,123,.35); box-shadow: 0 30px 60px rgba(0,0,0,.5); cursor: pointer; }
+  .frame img { width: 100%; aspect-ratio: 1200/628; object-fit: cover; }
+  .play {
+    position: absolute; inset: 0; margin: auto; width: 78px; height: 78px; border-radius: 50%;
+    display: grid; place-items: center; font-size: 28px; color: #1a1206; padding-left: 5px;
+    background: radial-gradient(circle, #f6e2a8, var(--gold) 60%, var(--gold-2));
+    box-shadow: 0 0 0 10px rgba(233,199,123,.25);
+    transition: transform .2s;
+  }
+  .frame:hover .play { transform: scale(1.08); }
+  .showcase ul { list-style: none; margin: 18px 0 28px; }
+  .showcase li { padding: 8px 0 8px 28px; position: relative; color: var(--mist); }
+  .showcase li::before { content: "◆"; position: absolute; left: 0; color: var(--gold); font-size: 13px; top: 11px; }
+
+  /* Quiz */
+  .quiz { background: radial-gradient(ellipse at top, #1b2444 0%, var(--ink) 70%); }
+  .paths { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; max-width: 900px; margin: 0 auto; }
+  .path {
+    padding: 26px 18px; border-radius: var(--radius); text-align: center; cursor: pointer;
+    border: 1px solid rgba(255,255,255,.14); background: rgba(255,255,255,.03); color: var(--text);
+    font: inherit; transition: all .2s;
+  }
+  .path:hover, .path.on { border-color: var(--gold); background: rgba(233,199,123,.08); }
+  .path .ico { font-size: 38px; }
+  .path strong { display: block; font-family: "Cinzel", serif; font-size: 19px; margin: 8px 0 4px; }
+  .path span { color: var(--muted); font-size: 14px; }
+  .result { max-width: 640px; margin: 34px auto 0; text-align: center; display: none; }
+  .result.show { display: block; animation: rise .5s ease; }
+  .result p { color: var(--mist); margin-bottom: 20px; }
+  @keyframes rise { from { opacity: 0; transform: translateY(12px);} to { opacity: 1; transform: none;} }
+
+  /* Final CTA */
+  .final { position: relative; text-align: center; overflow: hidden; }
+  .final::before { content: ""; position: absolute; inset: 0; background: url("assets/cover.webp") center/cover; opacity: .22; filter: blur(2px); }
+  .final .wrap { position: relative; }
+  .final .brush { font-size: clamp(38px, 7vw, 84px); margin: 8px 0 24px; }
+
+  footer { padding: 28px 16px 90px; text-align: center; color: var(--muted); font-size: 12px; border-top: 1px solid rgba(255,255,255,.06); }
+
+  /* Sticky mobile CTA */
+  .sticky {
+    position: fixed; left: 0; right: 0; bottom: 0; z-index: 30; display: none;
+    padding: 10px 16px calc(10px + env(safe-area-inset-bottom));
+    background: rgba(11,16,32,.92); backdrop-filter: blur(8px); border-top: 1px solid rgba(233,199,123,.3);
+  }
+  .sticky .btn { width: 100%; padding: 14px; font-size: 16px; }
+
+  /* Modal */
+  .modal { position: fixed; inset: 0; z-index: 50; display: none; place-items: center; background: rgba(0,0,0,.88); padding: 16px; }
+  .modal.open { display: grid; }
+  .modal video { width: min(1100px, 100%); max-height: 85vh; border-radius: 10px; }
+  .modal .x { position: absolute; top: 14px; right: 18px; font-size: 32px; background: none; border: 0; color: #fff; cursor: pointer; }
+
+  /* Reveal */
+  .reveal { opacity: 0; transform: translateY(24px); transition: opacity .7s ease, transform .7s ease; }
+  .reveal.in { opacity: 1; transform: none; }
+
+  @media (max-width: 900px) {
+    .grid { grid-template-columns: repeat(2, 1fr); }
+    .showcase { grid-template-columns: 1fr; }
+    .stats { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 600px) {
+    .grid, .paths { grid-template-columns: 1fr; }
+    .top .btn { display: none; }
+    .sticky { display: block; }
+    .btn { padding: 15px 28px; font-size: 16px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation: none !important; transition: none !important; }
+    .reveal { opacity: 1; transform: none; }
+  }
+</style>
+</head>
+<body>
+
+<header class="top">
+  <a class="logo" href="#top" aria-label="Where Winds Meet">
+    <span class="logo-mark">燕</span><span>WHERE<br>WINDS MEET</span>
+  </a>
+  <a class="btn cta" href="#">Jouer gratuitement</a>
+</header>
+
+<!-- HERO : vidéo en fond -->
+<section class="hero" id="top">
+  <img class="poster" src="assets/cover.webp" alt="">
+  <video id="bg" autoplay muted loop playsinline preload="metadata" poster="assets/cover.webp">
+    <source src="assets/trailer.mp4" type="video/mp4">
+  </video>
+  <div class="hero-inner">
+    <p class="kicker">Plus de 100 millions de joueurs</p>
+    <h1>
+      <span class="brush dark">Le Jianghu t'attend</span><br>
+      <span class="brush gold">Joue gratuitement</span>
+    </h1>
+    <p class="lead">Chine, Xe siècle. Maîtrisez les arts martiaux, parcourez un monde immense et écrivez votre propre légende. 100&nbsp;% gratuit.</p>
+    <div class="hero-cta">
+      <a class="btn cta pulse" href="#">▶ Jouer gratuitement</a>
+      <button class="btn btn-ghost" data-trailer type="button">Voir le trailer</button>
+    </div>
+    <nav class="platforms" aria-label="Plateformes">
+      <a class="platform" data-go="pc" href="#">Windows</a>
+      <a class="platform" data-go="steam" href="#">Steam</a>
+      <a class="platform" data-go="ps5" href="#">PS5</a>
+      <a class="platform" data-go="epic" href="#">Epic Games Store</a>
+      <a class="platform" data-go="xbox" href="#">Xbox</a>
+      <a class="platform" data-go="ios" href="#">App Store</a>
+      <a class="platform" data-go="android" href="#">Google Play</a>
+    </nav>
+  </div>
+  <button class="sound" id="sound" type="button" aria-label="Activer le son">🔇</button>
+</section>
+
+<!-- STATS -->
+<section>
+  <div class="wrap stats reveal">
+    <div class="stat"><b>100M+</b><small>joueurs dans le monde</small></div>
+    <div class="stat"><b>20+</b><small>régions à explorer</small></div>
+    <div class="stat"><b>7</b><small>plateformes</small></div>
+    <div class="stat"><b>0 €</b><small>pour jouer</small></div>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section class="features">
+  <div class="wrap">
+    <h2 class="h2 reveal">Pourquoi <span>100 millions</span> de joueurs l'ont adopté</h2>
+    <p class="sub reveal">Une aventure épique inspirée des légendes Wuxia, accessible à tous.</p>
+    <div class="grid">
+      <div class="card reveal"><div class="ico">⚔️</div><h3>Combats cinématiques</h3><p>Enchaînez techniques martiales, parades et acrobaties dans des duels spectaculaires.</p></div>
+      <div class="card reveal"><div class="ico">🏯</div><h3>Monde ouvert immense</h3><p>Plus de 20 régions : cités animées, temples cachés, montagnes et forêts brumeuses.</p></div>
+      <div class="card reveal"><div class="ico">📜</div><h3>Votre légende</h3><p>Une grande campagne solo, et des aventures en coop avec vos amis.</p></div>
+      <div class="card reveal"><div class="ico">🔄</div><h3>Cross-play</h3><p>PC, console ou mobile : votre progression vous suit partout.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- SHOWCASE : image + trailer -->
+<section>
+  <div class="wrap showcase">
+    <div class="frame reveal" data-trailer role="button" tabindex="0" aria-label="Lire le trailer">
+      <img src="assets/cover.webp" alt="Where Winds Meet – Over 100 Million Worldwide Players" loading="lazy">
+      <span class="play">▶</span>
+    </div>
+    <div class="reveal">
+      <h2 class="h2" style="text-align:left">Le vent se lève, <span>héros</span></h2>
+      <ul>
+        <li>Gratuit, sans pay-to-win : les achats sont uniquement cosmétiques</li>
+        <li>Nouvelles régions, histoires et boss à chaque mise à jour</li>
+        <li>Disponible sur PC, PS5, Xbox, iOS et Android</li>
+      </ul>
+      <a class="btn cta" href="#">Commencer l'aventure</a>
+    </div>
+  </div>
+</section>
+
+<!-- QUIZ d'engagement -->
+<section class="quiz">
+  <div class="wrap">
+    <h2 class="h2 reveal">Quelle <span>voie martiale</span> est la vôtre&nbsp;?</h2>
+    <p class="sub reveal">Choisissez votre style et découvrez votre destin.</p>
+    <div class="paths reveal">
+      <button class="path" type="button" data-path="sword"><div class="ico">🗡️</div><strong>La Lame</strong><span>Rapide, précis, élégant</span></button>
+      <button class="path" type="button" data-path="spear"><div class="ico">🔱</div><strong>La Lance</strong><span>Puissance et portée</span></button>
+      <button class="path" type="button" data-path="fan"><div class="ico">🪭</div><strong>L'Éventail</strong><span>Grâce et mystère</span></button>
+    </div>
+    <div class="result" id="result">
+      <p id="result-text"></p>
+      <a class="btn cta pulse" href="#">Réclamer mon destin – Gratuit</a>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="final">
+  <div class="wrap reveal">
+    <p class="kicker">Rejoignez plus de 100 millions de joueurs</p>
+    <p class="brush gold">Votre légende commence</p>
+    <a class="btn cta pulse" href="#">▶ Télécharger gratuitement</a>
+  </div>
+</section>
+
+<footer>
+  <p>Where Winds Meet est une marque de ses propriétaires respectifs (Everstone Studio / NetEase Games). Page promotionnelle indépendante, non affiliée à l'éditeur.</p>
+</footer>
+
+<div class="sticky"><a class="btn cta" href="#">▶ Jouer gratuitement</a></div>
+
+<div class="modal" id="modal" aria-hidden="true">
+  <button class="x" type="button" aria-label="Fermer">×</button>
+  <video id="trailer" controls playsinline preload="none" poster="assets/cover.webp">
+    <source src="assets/trailer.mp4" type="video/mp4">
+  </video>
+</div>
+
+<script>
+  /* ===== CONFIG : remplacez par vos liens de tracking / stores ===== */
+  var CONFIG = {
+    // Si défini, tous les CTA pointent vers ce lien (ex. lien d'affiliation). Surchargeable via ?go=URL
+    override: "",
+    links: {
+      pc:      "https://www.wherewindsmeetgame.com/",
+      steam:   "https://store.steampowered.com/search/?term=Where+Winds+Meet",
+      epic:    "https://store.epicgames.com/p/where-winds-meet",
+      ps5:     "https://store.playstation.com/search/where%20winds%20meet",
+      xbox:    "https://www.xbox.com/en-US/search?q=Where+Winds+Meet",
+      ios:     "https://apps.apple.com/us/search?term=where%20winds%20meet",
+      android: "https://play.google.com/store/search?q=Where%20Winds%20Meet&c=apps"
+    }
+  };
+
+  (function () {
+    var params = new URLSearchParams(location.search);
+    var override = params.get("go") || CONFIG.override;
+
+    // Conserve les paramètres de tracking (utm_*, clickid, subid…) sur le lien de sortie
+    function withTracking(url) {
+      try {
+        var u = new URL(url);
+        params.forEach(function (v, k) { if (k !== "go" && !u.searchParams.has(k)) u.searchParams.set(k, v); });
+        return u.toString();
+      } catch (e) { return url; }
+    }
+
+    function detect() {
+      var ua = navigator.userAgent || "";
+      if (/android/i.test(ua)) return "android";
+      if (/iPad|iPhone|iPod/.test(ua) || (/Macintosh/.test(ua) && navigator.maxTouchPoints > 1)) return "ios";
+      if (/Xbox/i.test(ua)) return "xbox";
+      if (/PlayStation/i.test(ua)) return "ps5";
+      return "steam";
+    }
+
+    var main = withTracking(override || CONFIG.links[detect()]);
+    document.querySelectorAll("a.cta").forEach(function (a) { a.href = main; a.rel = "noopener"; });
+    document.querySelectorAll("a[data-go]").forEach(function (a) {
+      a.href = withTracking(override || CONFIG.links[a.dataset.go]); a.rel = "noopener";
+    });
+
+    // Son de la vidéo de fond
+    var bg = document.getElementById("bg"), sound = document.getElementById("sound");
+    sound.addEventListener("click", function () {
+      bg.muted = !bg.muted;
+      if (!bg.muted) bg.play();
+      sound.textContent = bg.muted ? "🔇" : "🔊";
+      sound.setAttribute("aria-label", bg.muted ? "Activer le son" : "Couper le son");
+    });
+
+    // Modal trailer
+    var modal = document.getElementById("modal"), trailer = document.getElementById("trailer");
+    function openModal() { modal.classList.add("open"); modal.setAttribute("aria-hidden", "false"); bg.pause(); trailer.currentTime = 0; trailer.play(); }
+    function closeModal() { modal.classList.remove("open"); modal.setAttribute("aria-hidden", "true"); trailer.pause(); bg.play(); }
+    document.querySelectorAll("[data-trailer]").forEach(function (el) {
+      el.addEventListener("click", openModal);
+      el.addEventListener("keydown", function (e) { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); openModal(); } });
+    });
+    modal.addEventListener("click", function (e) { if (e.target === modal || e.target.classList.contains("x")) closeModal(); });
+    document.addEventListener("keydown", function (e) { if (e.key === "Escape" && modal.classList.contains("open")) closeModal(); });
+
+    // Quiz
+    var texts = {
+      sword: "Votre lame tranche le vent. Les maîtres du Jianghu vous attendent pour votre premier duel.",
+      spear: "Votre lance fait trembler les champs de bataille. Une armée entière attend son champion.",
+      fan: "Votre éventail cache mille secrets. Les cours impériales murmurent déjà votre nom."
+    };
+    var result = document.getElementById("result"), resultText = document.getElementById("result-text");
+    document.querySelectorAll(".path").forEach(function (b) {
+      b.addEventListener("click", function () {
+        document.querySelectorAll(".path").forEach(function (x) { x.classList.remove("on"); });
+        b.classList.add("on");
+        resultText.textContent = texts[b.dataset.path];
+        result.classList.remove("show"); void result.offsetWidth; result.classList.add("show");
+      });
+    });
+
+    // Apparition au scroll
+    var io = "IntersectionObserver" in window && new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) { if (en.isIntersecting) { en.target.classList.add("in"); io.unobserve(en.target); } });
+    }, { threshold: 0.15 });
+    document.querySelectorAll(".reveal").forEach(function (el) { io ? io.observe(el) : el.classList.add("in"); });
+  })();
+</script>
+</body>
+</html>
