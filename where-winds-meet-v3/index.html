@@ -1,15 +1,20 @@
 <!doctype html>
-<html lang="fr">
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Where Winds Meet 2.0 – RPG d'action Wuxia gratuit | PC, Console, Mobile</title>
-<meta name="description" content="Where Winds Meet 2.0 : RPG d'action Wuxia en monde ouvert, gratuit sur Windows, Steam, Epic, PS5, Xbox, iOS et Android. Découvrez l'univers, les combats et le trailer.">
+<title>Where Winds Meet 2.0 – Free-to-Play Wuxia Action RPG | PC, Console, Mobile</title>
+<meta name="description" content="Where Winds Meet 2.0: the open-world wuxia action RPG, free to play on Windows, Steam, Epic, PS5, Xbox, iOS and Android. Explore the world, the combat and the trailer.">
 <meta name="robots" content="index, follow">
 <meta name="theme-color" content="#08090b">
+<link rel="alternate" hreflang="en" href="?lang=en">
+<link rel="alternate" hreflang="zh-Hans" href="?lang=zh">
+<link rel="alternate" hreflang="ja" href="?lang=ja">
+<link rel="alternate" hreflang="ko" href="?lang=ko">
+<link rel="alternate" hreflang="x-default" href="./">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Where Winds Meet 2.0 – Où l'encre rencontre la lame">
-<meta property="og:description" content="RPG d'action Wuxia en monde ouvert. Gratuit sur PC, console et mobile.">
+<meta property="og:title" content="Where Winds Meet 2.0 – Where Ink Meets the Blade">
+<meta property="og:description" content="Open-world wuxia action RPG. Free to play on PC, console and mobile.">
 <meta property="og:image" content="assets/poster.webp">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -18,25 +23,42 @@
 <link rel="preload" as="image" href="assets/poster.webp" fetchpriority="high">
 <link rel="stylesheet" href="style.css">
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"VideoGame","name":"Where Winds Meet","genre":["Action RPG","Wuxia","Open World"],"gamePlatform":["PC","PlayStation 5","Xbox Series X|S","iOS","Android"],"offers":{"@type":"Offer","price":"0","priceCurrency":"EUR"}}
+{"@context":"https://schema.org","@type":"VideoGame","name":"Where Winds Meet","genre":["Action RPG","Wuxia","Open World"],"gamePlatform":["PC","PlayStation 5","Xbox Series X|S","iOS","Android"],"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}
 </script>
 </head>
 <body>
 
 <!-- ============ NAVIGATION ============ -->
 <header class="nav" id="nav">
-  <a class="logo" href="#top" aria-label="Where Winds Meet – accueil">
+  <a class="logo" href="#top" aria-label="Where Winds Meet">
     <svg viewBox="0 0 40 40" aria-hidden="true"><path d="M8 6v28M20 4v32M32 6v28M4 14h32M6 26h28" stroke="currentColor" stroke-width="2.6" fill="none" stroke-linecap="round"/></svg>
     <span>WHERE<br>WINDS MEET</span>
   </a>
-  <nav class="menu" id="menu" aria-label="Navigation principale">
-    <a href="#top">Accueil</a>
-    <a href="#univers">Univers</a>
-    <a href="#combat">Combats</a>
-    <a href="#medias">Médias</a>
-    <a href="#jouer">Plateformes</a>
+  <nav class="menu" id="menu" aria-label="Main navigation">
+    <a href="#top" data-i18n="nav.home">Home</a>
+    <a href="#world" data-i18n="nav.world">World</a>
+    <a href="#combat" data-i18n="nav.combat">Combat</a>
+    <a href="#media" data-i18n="nav.media">Media</a>
+    <a href="#faq" data-i18n="nav.faq">FAQ</a>
   </nav>
-  <a class="btn btn-sm cta" href="https://ad.propellerads.com/conversion.php?aid=3923722&amp;pid=&amp;tid=159517&amp;visitor_id=${external_id}&amp;payout=${PAYOUT}" data-pos="nav" rel="nofollow noopener">Jouer gratuitement</a>
+
+  <!-- Language selector -->
+  <div class="lang" id="lang">
+    <button class="lang-btn" id="lang-btn" type="button" aria-haspopup="listbox" aria-expanded="false" aria-controls="lang-list" data-i18n-aria="lang.label" aria-label="Language">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9.2" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M2.8 12h18.4M12 2.8c2.6 2.6 3.8 5.7 3.8 9.2s-1.2 6.6-3.8 9.2c-2.6-2.6-3.8-5.7-3.8-9.2S9.4 5.4 12 2.8z" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>
+      <span class="lang-cur" id="lang-cur">English</span>
+      <span class="lang-code" id="lang-code">EN</span>
+      <svg class="caret" viewBox="0 0 12 12" aria-hidden="true"><path d="M2.5 4.5 6 8l3.5-3.5" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>
+    </button>
+    <ul class="lang-list" id="lang-list" role="listbox" tabindex="-1" hidden>
+      <li role="option" data-lang="en" aria-selected="true" lang="en">English</li>
+      <li role="option" data-lang="zh" aria-selected="false" lang="zh-Hans">简体中文</li>
+      <li role="option" data-lang="ja" aria-selected="false" lang="ja">日本語</li>
+      <li role="option" data-lang="ko" aria-selected="false" lang="ko">한국어</li>
+    </ul>
+  </div>
+
+  <a class="btn btn-sm cta nav-cta" href="#" data-pos="nav" rel="nofollow noopener" data-i18n="cta.play">Play Free</a>
   <button class="burger" id="burger" type="button" aria-label="Menu" aria-expanded="false" aria-controls="menu"><i></i><i></i><i></i></button>
 </header>
 
@@ -48,130 +70,151 @@
   <div class="hero-shade" aria-hidden="true"></div>
 
   <div class="hero-inner">
-    <p class="tag"><span>Mise à jour 2.0</span> Une nouvelle ère Wuxia</p>
+    <p class="tag"><span data-i18n="hero.badge">Update 2.0</span> <em data-i18n="hero.era">A New Wuxia Era</em></p>
     <h1 class="title">
       <span class="title-main">Where Winds Meet</span>
-      <span class="title-sub">Où l'encre rencontre la lame</span>
+      <span class="title-sub" data-i18n="hero.sub">Where Ink Meets the Blade</span>
     </h1>
-    <a class="btn btn-xl cta" href="https://ad.propellerads.com/conversion.php?aid=3923722&amp;pid=&amp;tid=159517&amp;visitor_id=${external_id}&amp;payout=${PAYOUT}" data-pos="hero" rel="nofollow noopener" id="hero-cta">
-      <span class="btn-deco" aria-hidden="true"></span>Jouer gratuitement
+    <a class="btn btn-xl cta" href="#" data-pos="hero" rel="nofollow noopener" id="hero-cta">
+      <span class="btn-deco" aria-hidden="true"></span><span data-i18n="cta.play">Play Free</span>
     </a>
-    <p class="hero-note">Gratuit · Cross-play · Plus de 100 millions de joueurs</p>
+    <p class="hero-note" data-i18n="hero.note">Free to play · Cross-play · 100M+ players worldwide</p>
 
-    <ul class="stores" aria-label="Disponible sur">
-      <li><a class="store cta" href="#" data-pos="store-windows" rel="nofollow noopener"><b>⊞</b><span><small>Télécharger pour</small>Windows</span></a></li>
-      <li><a class="store cta" href="#" data-pos="store-steam" rel="nofollow noopener"><b>◎</b><span><small>Disponible sur</small>Steam</span></a></li>
-      <li><a class="store cta" href="#" data-pos="store-epic" rel="nofollow noopener"><b>E</b><span><small>Disponible sur</small>Epic Games</span></a></li>
-      <li><a class="store cta" href="#" data-pos="store-ps5" rel="nofollow noopener"><b>PS</b><span><small>Disponible sur</small>PS5</span></a></li>
-      <li><a class="store cta" href="#" data-pos="store-xbox" rel="nofollow noopener"><b>⨂</b><span><small>Disponible sur</small>Xbox</span></a></li>
-      <li><a class="store cta" href="#" data-pos="store-ios" rel="nofollow noopener"><b>▣</b><span><small>Télécharger dans</small>App Store</span></a></li>
-      <li><a class="store cta" href="#" data-pos="store-android" rel="nofollow noopener"><b>▶</b><span><small>Disponible sur</small>Google Play</span></a></li>
+    <ul class="stores">
+      <li><a class="store cta" href="#" data-pos="store-windows" rel="nofollow noopener"><b>⊞</b><span><small data-i18n="store.dl">Download for</small>Windows</span></a></li>
+      <li><a class="store cta" href="#" data-pos="store-steam" rel="nofollow noopener"><b>◎</b><span><small data-i18n="store.on">Available on</small>Steam</span></a></li>
+      <li><a class="store cta" href="#" data-pos="store-epic" rel="nofollow noopener"><b>E</b><span><small data-i18n="store.on">Available on</small>Epic Games</span></a></li>
+      <li><a class="store cta" href="#" data-pos="store-ps5" rel="nofollow noopener"><b>PS</b><span><small data-i18n="store.on">Available on</small>PS5</span></a></li>
+      <li><a class="store cta" href="#" data-pos="store-xbox" rel="nofollow noopener"><b>⨂</b><span><small data-i18n="store.on">Available on</small>Xbox</span></a></li>
+      <li><a class="store cta" href="#" data-pos="store-ios" rel="nofollow noopener"><b>▣</b><span><small data-i18n="store.dl">Download for</small>App Store</span></a></li>
+      <li><a class="store cta" href="#" data-pos="store-android" rel="nofollow noopener"><b>▶</b><span><small data-i18n="store.on">Available on</small>Google Play</span></a></li>
     </ul>
   </div>
 
-  <button class="sound" id="sound" type="button" aria-label="Activer le son"><span id="sound-ico">🔇</span> Son</button>
-  <a class="scroll" href="#univers" aria-label="Défiler vers le bas"><i></i></a>
+  <button class="sound" id="sound" type="button" data-i18n-aria="sound.on" aria-label="Turn sound on"><span id="sound-ico">🔇</span> <span data-i18n="sound.label">Sound</span></button>
+  <a class="scroll" href="#world" data-i18n-aria="scroll" aria-label="Scroll down"><i></i></a>
 </section>
 
 <main>
-  <!-- ============ UNIVERS (carrousel) ============ -->
-  <section class="sec univers" id="univers">
+  <!-- ============ WORLD (carousel) ============ -->
+  <section class="sec univers" id="world">
     <div class="wrap">
       <header class="sec-head reveal">
-        <p class="eyebrow">Le Jianghu</p>
-        <h2 class="h2">Un monde de légendes</h2>
-        <p class="lead">Chine, Xe siècle. Un empire déchiré, des écoles martiales rivales et un destin à écrire, le vôtre.</p>
+        <p class="eyebrow" data-i18n="world.eyebrow">The Jianghu</p>
+        <h2 class="h2" data-i18n="world.h2">A World of Legends</h2>
+        <p class="lead" data-i18n="world.lead">10th-century China. A divided empire, rival martial schools and a destiny waiting to be written: yours.</p>
       </header>
 
       <div class="slider reveal" id="slider">
         <div class="tabs" role="tablist">
-          <button class="tab on" role="tab" aria-selected="true" data-i="0" type="button">Monde ouvert</button>
-          <button class="tab" role="tab" aria-selected="false" data-i="1" type="button">Héros</button>
-          <button class="tab" role="tab" aria-selected="false" data-i="2" type="button">Combats</button>
+          <button class="tab on" role="tab" aria-selected="true" data-i="0" type="button" data-i18n="tab.world">Open World</button>
+          <button class="tab" role="tab" aria-selected="false" data-i="1" type="button" data-i18n="tab.heroes">Heroes</button>
+          <button class="tab" role="tab" aria-selected="false" data-i="2" type="button" data-i18n="tab.combat">Combat</button>
         </div>
         <div class="slides">
           <article class="slide on">
-            <img src="assets/monde.webp" alt="Paysage du monde ouvert de Where Winds Meet" width="480" height="270" loading="lazy" decoding="async">
-            <div class="slide-txt"><h3>Monde ouvert immense</h3><p>Montagnes brumeuses, cités impériales, temples oubliés : plus de 20 régions à parcourir à pied, à cheval ou dans les airs.</p></div>
+            <img src="assets/monde.webp" data-i18n-alt="alt.world" alt="Open-world landscape in Where Winds Meet" width="480" height="270" loading="lazy" decoding="async">
+            <div class="slide-txt"><h3 data-i18n="s1.h">Vast Open World</h3><p data-i18n="s1.p">Misty mountains, imperial cities and forgotten temples: over 20 regions to explore on foot, on horseback or through the skies.</p></div>
           </article>
           <article class="slide">
-            <img src="assets/heros.webp" alt="Héros en tenue de jade de Where Winds Meet" width="480" height="270" loading="lazy" decoding="async">
-            <div class="slide-txt"><h3>Votre héros, votre voie</h3><p>Créez votre personnage, choisissez votre école martiale et forgez votre réputation dans le Jianghu.</p></div>
+            <img src="assets/heros.webp" data-i18n-alt="alt.heroes" alt="Heroes in jade robes from Where Winds Meet" width="480" height="270" loading="lazy" decoding="async">
+            <div class="slide-txt"><h3 data-i18n="s2.h">Your Hero, Your Path</h3><p data-i18n="s2.p">Create your character, choose your martial school and build your reputation across the Jianghu.</p></div>
           </article>
           <article class="slide">
-            <img src="assets/combat.webp" alt="Combat cinématique dans Where Winds Meet" width="480" height="270" loading="lazy" decoding="async">
-            <div class="slide-txt"><h3>Arts martiaux cinématiques</h3><p>Parades, contres et techniques légendaires : chaque duel se joue comme une scène de film Wuxia.</p></div>
+            <img src="assets/combat.webp" data-i18n-alt="alt.combat" alt="Cinematic combat in Where Winds Meet" width="480" height="270" loading="lazy" decoding="async">
+            <div class="slide-txt"><h3 data-i18n="s3.h">Cinematic Martial Arts</h3><p data-i18n="s3.p">Parries, counters and legendary techniques: every duel plays out like a scene from a wuxia film.</p></div>
           </article>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ============ COMBAT (points forts) ============ -->
+  <!-- ============ COMBAT ============ -->
   <section class="sec combat" id="combat" style="--bg:url(assets/combat.webp)">
     <div class="wrap">
       <header class="sec-head reveal">
-        <p class="eyebrow">Gameplay</p>
-        <h2 class="h2">Maîtrisez la lame</h2>
+        <p class="eyebrow" data-i18n="combat.eyebrow">Gameplay</p>
+        <h2 class="h2" data-i18n="combat.h2">Master the Blade</h2>
       </header>
       <div class="feats">
-        <div class="feat reveal"><span class="num">01</span><h3>Combats d'action</h3><p>Esquives, parades parfaites et combos dévastateurs.</p></div>
-        <div class="feat reveal"><span class="num">02</span><h3>Solo &amp; Coop</h3><p>Une grande campagne solo et des aventures entre amis.</p></div>
-        <div class="feat reveal"><span class="num">03</span><h3>Cross-play</h3><p>Votre progression vous suit sur PC, console et mobile.</p></div>
-        <div class="feat reveal"><span class="num">04</span><h3>100&nbsp;% gratuit</h3><p>Aucun paiement requis pour jouer, sans pay-to-win.</p></div>
+        <div class="feat reveal"><span class="num">01</span><h3 data-i18n="f1.h">Action Combat</h3><p data-i18n="f1.p">Dodges, perfect parries and devastating combos.</p></div>
+        <div class="feat reveal"><span class="num">02</span><h3 data-i18n="f2.h">Solo &amp; Co-op</h3><p data-i18n="f2.p">A full solo campaign plus adventures with friends.</p></div>
+        <div class="feat reveal"><span class="num">03</span><h3 data-i18n="f3.h">Cross-Play</h3><p data-i18n="f3.p">Your progress follows you across PC, console and mobile.</p></div>
+        <div class="feat reveal"><span class="num">04</span><h3 data-i18n="f4.h">100% Free</h3><p data-i18n="f4.p">No payment required to play, no pay-to-win.</p></div>
       </div>
       <div class="center reveal">
-        <a class="btn btn-lg cta" href="https://ad.propellerads.com/conversion.php?aid=3923722&amp;pid=&amp;tid=159517&amp;visitor_id=${external_id}&amp;payout=${PAYOUT}" data-pos="combat" rel="nofollow noopener"><span class="btn-deco" aria-hidden="true"></span>Commencer l'aventure</a>
+        <a class="btn btn-lg cta" href="#" data-pos="combat" rel="nofollow noopener"><span class="btn-deco" aria-hidden="true"></span><span data-i18n="cta.start">Start Your Journey</span></a>
       </div>
     </div>
   </section>
 
-  <!-- ============ MÉDIAS ============ -->
-  <section class="sec medias" id="medias">
+  <!-- ============ MEDIA ============ -->
+  <section class="sec medias" id="media">
     <div class="wrap">
       <header class="sec-head reveal">
-        <p class="eyebrow">Médias</p>
-        <h2 class="h2">Trailer officiel 2.0</h2>
+        <p class="eyebrow" data-i18n="media.eyebrow">Media</p>
+        <h2 class="h2" data-i18n="media.h2">Official 2.0 Trailer</h2>
       </header>
-      <button class="media reveal" type="button" id="open-trailer" aria-label="Lire le trailer avec le son">
-        <img src="assets/poster.webp" alt="Where Ink Meets the Blade – trailer Where Winds Meet 2.0" width="640" height="360" loading="lazy" decoding="async">
+      <button class="media reveal" type="button" id="open-trailer" data-i18n-aria="media.play" aria-label="Play the trailer with sound">
+        <img src="assets/poster.webp" alt="" width="640" height="360" loading="lazy" decoding="async">
         <span class="play" aria-hidden="true"></span>
       </button>
       <div class="thumbs reveal">
-        <img src="assets/combat.webp" alt="Capture de combat" width="480" height="270" loading="lazy" decoding="async">
-        <img src="assets/heros.webp" alt="Capture des héros" width="480" height="270" loading="lazy" decoding="async">
-        <img src="assets/monde.webp" alt="Capture du monde ouvert" width="480" height="270" loading="lazy" decoding="async">
+        <img src="assets/combat.webp" data-i18n-alt="alt.combat" alt="Cinematic combat in Where Winds Meet" width="480" height="270" loading="lazy" decoding="async">
+        <img src="assets/heros.webp" data-i18n-alt="alt.heroes" alt="Heroes in jade robes from Where Winds Meet" width="480" height="270" loading="lazy" decoding="async">
+        <img src="assets/monde.webp" data-i18n-alt="alt.world" alt="Open-world landscape in Where Winds Meet" width="480" height="270" loading="lazy" decoding="async">
       </div>
     </div>
   </section>
 
-  <!-- ============ JOUER ============ -->
-  <section class="sec jouer" id="jouer" style="--bg:url(assets/monde.webp)">
+  <!-- ============ FAQ ============ -->
+  <section class="sec faq" id="faq">
+    <div class="wrap">
+      <header class="sec-head reveal">
+        <p class="eyebrow" data-i18n="faq.eyebrow">FAQ</p>
+        <h2 class="h2" data-i18n="faq.h2">Frequently Asked Questions</h2>
+      </header>
+      <div class="faq-list reveal">
+        <details open><summary data-i18n="q1">Is Where Winds Meet really free?</summary><p data-i18n="a1">Yes. The game is free to play. Optional purchases are cosmetic and are not required to progress.</p></details>
+        <details><summary data-i18n="q2">Which platforms can I play on?</summary><p data-i18n="a2">Windows PC (Steam, Epic Games Store), PlayStation 5, Xbox, iOS and Android.</p></details>
+        <details><summary data-i18n="q3">Can I play with friends on other devices?</summary><p data-i18n="a3">Yes. Cross-play lets you team up with friends on PC, console and mobile, and your progress carries over between devices.</p></details>
+        <details><summary data-i18n="q4">Is it single-player or multiplayer?</summary><p data-i18n="a4">Both. Enjoy a full story campaign solo, or explore and fight alongside other players in co-op.</p></details>
+        <details><summary data-i18n="q5">What's new in Update 2.0?</summary><p data-i18n="a5">Update 2.0 opens a new wuxia era with fresh content to explore. Watch the trailer above for a first look.</p></details>
+        <details><summary data-i18n="q6">How do I start playing?</summary><p data-i18n="a6">Tap “Play Free”, install the game on your device and begin your journey in minutes.</p></details>
+      </div>
+      <div class="center reveal faq-cta">
+        <a class="btn btn-lg cta" href="#" data-pos="faq" rel="nofollow noopener"><span class="btn-deco" aria-hidden="true"></span><span data-i18n="cta.play">Play Free</span></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ PLAY ============ -->
+  <section class="sec jouer" id="play" style="--bg:url(assets/monde.webp)">
     <div class="wrap center reveal">
-      <p class="eyebrow">Rejoignez plus de 100 millions de joueurs</p>
-      <h2 class="h2 big">Votre légende commence</h2>
-      <a class="btn btn-xl cta" href="https://ad.propellerads.com/conversion.php?aid=3923722&amp;pid=&amp;tid=159517&amp;visitor_id=${external_id}&amp;payout=${PAYOUT}" data-pos="final" rel="nofollow noopener"><span class="btn-deco" aria-hidden="true"></span>Jouer gratuitement</a>
+      <p class="eyebrow" data-i18n="final.eyebrow">Join over 100 million players</p>
+      <h2 class="h2 big" data-i18n="final.h2">Your Legend Begins</h2>
+      <a class="btn btn-xl cta" href="#" data-pos="final" rel="nofollow noopener"><span class="btn-deco" aria-hidden="true"></span><span data-i18n="cta.playNow">Play Free Now</span></a>
       <p class="plats">Windows · Steam · Epic Games · PS5 · Xbox · iOS · Android</p>
     </div>
   </section>
 </main>
 
 <footer class="foot">
-  <p><b>Page promotionnelle indépendante</b>, non affiliée à l'éditeur. Where Winds Meet est une marque de ses propriétaires respectifs (Everstone Studio / NetEase Games). Visuels issus du trailer officiel.</p>
+  <p data-i18n="footer">Independent promotional page, not affiliated with the publisher. Where Winds Meet is a trademark of its respective owners (Everstone Studio / NetEase Games). Visuals from the official trailer.</p>
 </footer>
 
-<!-- CTA sticky mobile -->
+<!-- Sticky mobile CTA -->
 <div class="sticky" id="sticky">
-  <a class="btn cta" href="https://ad.propellerads.com/conversion.php?aid=3923722&amp;pid=&amp;tid=159517&amp;visitor_id=${external_id}&amp;payout=${PAYOUT}" data-pos="sticky" rel="nofollow noopener">Jouer gratuitement</a>
+  <a class="btn cta" href="#" data-pos="sticky" rel="nofollow noopener" data-i18n="cta.play">Play Free</a>
 </div>
 
-<!-- Modal trailer -->
+<!-- Trailer modal -->
 <div class="modal" id="modal" role="dialog" aria-modal="true" aria-label="Trailer" hidden>
-  <button class="x" id="close" type="button" aria-label="Fermer">×</button>
+  <button class="x" id="close" type="button" data-i18n-aria="close" aria-label="Close">×</button>
   <video id="trailer" controls playsinline preload="none" poster="assets/poster.webp">
     <source src="assets/trailer.mp4" type="video/mp4">
   </video>
-  <a class="btn cta" href="https://ad.propellerads.com/conversion.php?aid=3923722&amp;pid=&amp;tid=159517&amp;visitor_id=${external_id}&amp;payout=${PAYOUT}" data-pos="modal" rel="nofollow noopener">Jouer gratuitement</a>
+  <a class="btn cta" href="#" data-pos="modal" rel="nofollow noopener" data-i18n="cta.play">Play Free</a>
 </div>
 
 <script src="main.js" defer></script>
