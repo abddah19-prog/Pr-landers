@@ -170,6 +170,12 @@
     stickyCta.classList.add("is-visible");
   }
 
+  /* ---------- Ticker: duplicate the items so the scroll loops seamlessly ---------- */
+  var tickerTrack = document.getElementById("tickerTrack");
+  if (tickerTrack) {
+    tickerTrack.innerHTML += tickerTrack.innerHTML;
+  }
+
   /* ---------- Keyboard ---------- */
   document.addEventListener("keydown", function (e) {
     if (e.key === "Escape" && screenVideo.classList.contains("is-active")) {
