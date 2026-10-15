@@ -4,217 +4,80 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <title>【基本プレイ無料】アークナイツ：エンドフィールド｜今すぐプレイ — Arknights: Endfield</title>
-  <meta name="description" content="アークナイツ：エンドフィールド — 惑星タロⅡを舞台にしたリアルタイム3D戦略RPG。PVをチェックして、今すぐ無料でプレイ！ Arknights: Endfield — play free now.">
+  <meta name="description" content="アークナイツ：エンドフィールド — 惑星タロⅡを舞台にしたリアルタイム3D戦略RPG。今すぐ無料でプレイ！ Arknights: Endfield — play free now.">
   <meta name="theme-color" content="#f4efe3">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700;900&family=Shippori+Mincho+B1:wght@700;800&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700;900&family=Shippori+Mincho+B1:wght@800&display=swap">
   <link rel="preload" as="image" href="cover.jpg">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-  <!-- Announcement ticker (電光掲示板) -->
-  <div class="ticker" aria-label="お知らせ / News">
-    <div class="ticker__track" id="tickerTrack">
-      <span>★ 基本プレイ無料 <em>Free to play</em></span>
-      <span>★ 今すぐダウンロード <em>Download now</em></span>
-      <span>★ PC / PS5 / iOS / Android 対応</span>
-      <span>★ 新たな物語がここから始まる <em>Your story starts here</em></span>
-    </div>
-  </div>
+  <main class="page">
+    <!-- Blurred copy of the art fills the empty space around the artwork -->
+    <div class="backdrop" aria-hidden="true"></div>
 
-  <!-- Top bar -->
-  <header class="topbar">
-    <div class="brand">
-      <span class="brand__mark" aria-hidden="true"></span>
-      <span class="brand__text">
-        <strong>アークナイツ：エンドフィールド</strong>
-        <small lang="en">ARKNIGHTS: ENDFIELD</small>
-      </span>
-    </div>
-    <a class="topbar__cta js-cta" href="#" data-source="topbar">
-      <span>無料でプレイ</span>
-      <span lang="en">PLAY FREE</span>
-    </a>
-  </header>
+    <!-- Key art -->
+    <section class="frame" aria-label="アークナイツ：エンドフィールド / Arknights: Endfield">
+      <img class="art" src="cover.jpg" alt="アークナイツ：エンドフィールド — エンドフィールドを探索 / Explore the Endfield" id="art">
 
-  <main>
-    <!-- Media stage (16:9): image → video → image -->
-    <section class="stage-wrap" aria-label="PV / Trailer">
-      <div class="stage" id="stage">
-
-        <!-- START SCREEN: key art + blinking CTA -->
-        <div class="screen screen--start is-active" id="screenStart">
-          <img class="screen__img" src="cover.jpg" alt="アークナイツ：エンドフィールド — エンドフィールドを探索 / Explore the Endfield" data-fallback>
-
-          <button class="play-btn" id="btnPlay" type="button" aria-label="PVを見る / Watch the trailer">
-            <span class="play-btn__icon" aria-hidden="true"></span>
-            <span class="play-btn__label">
-              <span>PVを見る</span>
-              <span lang="en">Watch trailer</span>
-            </span>
-          </button>
-
-          <a class="img-cta js-cta" href="#" data-source="start-image">
-            <span class="img-cta__badge" aria-hidden="true">無料</span>
-            <span class="img-cta__ja">今すぐ無料でプレイ ▶</span>
-            <span class="img-cta__en" lang="en">PLAY FREE NOW</span>
-          </a>
-
-          <div class="countdown" id="countdown" aria-live="polite">
-            <span>あと<b id="countdownNum">4</b>秒でPV再生</span>
-            <span lang="en">Trailer starts soon</span>
-          </div>
-        </div>
-
-        <!-- VIDEO -->
-        <div class="screen screen--video" id="screenVideo">
-          <video class="screen__video" id="video" playsinline preload="metadata" poster="cover.jpg">
-            <source src="video.mp4" type="video/mp4">
-            <source src="https://vid.arknights-endfield0726.eaglgame.com/vid%C3%A9os/Arknights%20Endfield00VD.mp4" type="video/mp4">
-          </video>
-          <button class="unmute" id="btnUnmute" type="button">
-            🔊 <span>タップで音声オン</span> <span lang="en">Tap for sound</span>
-          </button>
-          <div class="video-ui">
-            <button class="video-ui__btn" id="btnSound" type="button" aria-label="音声切替 / Toggle sound">🔇</button>
-            <button class="video-ui__btn" id="btnSkip" type="button">
-              <span>スキップ</span> <span lang="en">Skip</span> ▸
-            </button>
-          </div>
-          <a class="video-cta js-cta" href="#" data-source="video">
-            <span>無料でプレイ</span> <span lang="en">PLAY FREE</span>
-          </a>
-          <div class="progress" aria-hidden="true"><div class="progress__bar" id="progressBar"></div></div>
-        </div>
-
-        <!-- END SCREEN: key art + blinking CTA -->
-        <div class="screen screen--end" id="screenEnd">
-          <img class="screen__img" src="cover.jpg" alt="アークナイツ：エンドフィールド — エンドフィールドを探索 / Explore the Endfield" data-fallback>
-
-          <button class="replay-btn" id="btnReplay" type="button">
-            ↻ <span>もう一度見る</span> <span lang="en">Replay</span>
-          </button>
-
-          <a class="img-cta js-cta" href="#" data-source="end-image">
-            <span class="img-cta__badge" aria-hidden="true">無料</span>
-            <span class="img-cta__ja">今すぐダウンロード ▶</span>
-            <span class="img-cta__en" lang="en">DOWNLOAD &amp; PLAY FREE</span>
-          </a>
-        </div>
-
-      </div>
+      <!-- Main CTA, placed on the artwork's banner (landscape screens) -->
+      <a class="cta cta--art js-cta" href="#" data-source="art">
+        <span class="cta__shine" aria-hidden="true"></span>
+        <span class="cta__badge" aria-hidden="true">無料</span>
+        <span class="cta__ja">今すぐ無料でプレイ</span>
+        <span class="cta__en" lang="en">PLAY FREE NOW</span>
+        <span class="cta__arrow" aria-hidden="true">▶</span>
+      </a>
     </section>
 
-    <!-- Hero: catchphrase + main CTA -->
-    <section class="hero">
-      <p class="hero__vertical" aria-hidden="true">この地の果てで、<br>運命を切り拓け。</p>
-
-      <div class="hero__body">
-        <p class="eyebrow">
-          <span>ようこそ、管理人</span>
-          <span lang="en">WELCOME, ENDMINISTRATOR</span>
-        </p>
-        <h1 class="title">
-          <span class="title__ja"><span>エンドフィールド</span><span>を探索</span></span>
-          <span class="title__en" lang="en">Explore the Endfield</span>
-        </h1>
-        <p class="hero__sub">
-          <span>オペレーターを率いて惑星タロⅡを駆け抜け、失われた文明を再建せよ。</span>
-          <span lang="en">Lead your Operators across Talos-II, fight in real time and rebuild civilization.</span>
-        </p>
-
-        <div class="cta-group">
-          <p class="bubble">＼ ダウンロードは<strong>無料</strong>！ ／</p>
-          <a class="cta cta--blink js-cta" href="#" data-source="hero">
-            <span class="cta__ja">今すぐ無料でプレイ</span>
-            <span class="cta__en" lang="en">PLAY FREE NOW</span>
-          </a>
-        </div>
-      </div>
-
-      <span class="hanko" aria-hidden="true">基本<br>無料</span>
-    </section>
-
-    <!-- 3つの魅力 / Features -->
-    <section class="features-wrap" aria-labelledby="featuresTitle">
-      <h2 class="section-title" id="featuresTitle">
-        <span class="section-title__ja">エンドフィールド <em>3つの魅力</em></span>
-        <span class="section-title__en" lang="en">3 reasons to play</span>
-      </h2>
-
-      <div class="features">
-        <article class="feature">
-          <span class="feature__num">POINT <b>01</b></span>
-          <span class="feature__kanji" aria-hidden="true">戦</span>
-          <h3>リアルタイム小隊バトル</h3>
-          <p class="feature__en" lang="en">Real-time squad combat</p>
-          <p class="feature__txt">4人のオペレーターを自在に切り替え、スキルを繋いで爽快な3Dバトルを制しよう。</p>
-          <p class="feature__txt feature__txt--en" lang="en">Switch between four Operators and chain skills in fast 3D battles.</p>
-        </article>
-        <article class="feature">
-          <span class="feature__num">POINT <b>02</b></span>
-          <span class="feature__kanji" aria-hidden="true">築</span>
-          <h3>集成工業システムを構築</h3>
-          <p class="feature__en" lang="en">Build the AIC factory</p>
-          <p class="feature__txt">生産ライン・電力網・拠点を自由に設計。あなただけの工業基地を作り上げよう。</p>
-          <p class="feature__txt feature__txt--en" lang="en">Design production lines, power grids and outposts your way.</p>
-        </article>
-        <article class="feature">
-          <span class="feature__num">POINT <b>03</b></span>
-          <span class="feature__kanji" aria-hidden="true">探</span>
-          <h3>惑星タロⅡを探索</h3>
-          <p class="feature__en" lang="en">Explore Talos-II</p>
-          <p class="feature__txt">遺跡と脅威と秘密に満ちた広大な辺境へ。未知の大地があなたを待っている。</p>
-          <p class="feature__txt feature__txt--en" lang="en">A vast frontier full of ruins, threats and secrets awaits.</p>
-        </article>
-      </div>
-    </section>
-
-    <!-- Final CTA + platforms -->
-    <section class="final">
-      <p class="final__line">
-        <span>基本プレイ無料｜PC / PS5 / iOS / Android</span>
-        <span lang="en">Free to play · PC / PS5 / iOS / Android</span>
+    <!-- Bottom panel (portrait / mobile screens) -->
+    <section class="panel" aria-label="今すぐプレイ / Play now">
+      <p class="panel__title">
+        <span class="panel__ja">エンドフィールドを探索</span>
+        <span class="panel__en" lang="en">EXPLORE THE ENDFIELD</span>
       </p>
-
-      <div class="cta-group">
-        <p class="bubble">＼ 管理人、出撃の時です！ ／</p>
-        <a class="cta cta--blink js-cta" href="#" data-source="footer">
-          <span class="cta__ja">冒険を始めよう</span>
-          <span class="cta__en" lang="en">START YOUR JOURNEY</span>
-        </a>
-      </div>
-
-      <div class="platforms" aria-label="対応プラットフォーム / Platforms">
-        <a class="platform js-cta" href="#" data-source="platform-ios">
-          <small>App Storeで</small><strong>ダウンロード</strong>
-        </a>
-        <a class="platform js-cta" href="#" data-source="platform-android">
-          <small>Google Playで</small><strong>手に入れよう</strong>
-        </a>
-        <a class="platform js-cta" href="#" data-source="platform-pc">
-          <small>Windows</small><strong>PC版</strong>
-        </a>
-        <a class="platform js-cta" href="#" data-source="platform-ps5">
-          <small>PlayStation®5</small><strong>PS5版</strong>
-        </a>
-      </div>
+      <p class="bubble">＼ ダウンロードは<strong>無料</strong>！ <span lang="en">Free to play!</span> ／</p>
+      <a class="cta cta--panel js-cta" href="#" data-source="panel">
+        <span class="cta__shine" aria-hidden="true"></span>
+        <span class="cta__badge" aria-hidden="true">無料</span>
+        <span class="cta__ja">今すぐ無料でプレイ</span>
+        <span class="cta__en" lang="en">PLAY FREE NOW</span>
+        <span class="cta__arrow" aria-hidden="true">▶</span>
+      </a>
+      <p class="panel__platforms">PC / PS5 / iOS / Android</p>
     </section>
+
+    <!-- Mini video player (picture-in-picture style) -->
+    <aside class="player" id="player" aria-label="PV / Trailer">
+      <div class="player__screen">
+        <video class="player__video" id="video" src="video.mp4" poster="cover.jpg" playsinline muted loop autoplay preload="auto"></video>
+        <span class="player__tag">PV</span>
+        <button class="player__center" id="btnCenter" type="button" aria-label="再生 / Play">
+          <span class="icon-play" aria-hidden="true"></span>
+        </button>
+      </div>
+
+      <div class="player__bar">
+        <button class="player__btn" id="btnPlay" type="button" aria-label="一時停止 / Pause" title="再生・停止 / Play・Pause">
+          <span class="icon-pause" aria-hidden="true"></span>
+        </button>
+
+        <button class="player__btn" id="btnMute" type="button" aria-label="音声オン / Unmute" title="ミュート / Mute">🔇</button>
+        <input class="player__volume" id="volume" type="range" min="0" max="1" step="0.05" value="0.8" aria-label="音量 / Volume">
+
+        <button class="player__btn player__btn--expand" id="btnExpand" type="button" aria-label="拡大 / Enlarge" title="拡大 / Enlarge">
+          <span class="icon-expand" aria-hidden="true"></span>
+        </button>
+      </div>
+
+      <div class="player__progress" aria-hidden="true"><div class="player__progress-bar" id="progressBar"></div></div>
+    </aside>
+
+    <!-- Dim layer behind the enlarged player -->
+    <div class="player-shade" id="playerShade" aria-hidden="true"></div>
   </main>
-
-  <footer class="footer">
-    <p>© Hypergryph Co., Ltd. ALL RIGHTS RESERVED. Distributed by GRYPHLINE.</p>
-    <p>画像・映像の著作権は各権利者に帰属します。</p>
-  </footer>
-
-  <!-- Sticky mobile CTA -->
-  <a class="sticky-cta js-cta" href="#" data-source="sticky" id="stickyCta">
-    <span class="sticky-cta__badge">無料</span>
-    <span>今すぐプレイ</span>
-    <span lang="en">PLAY FREE</span>
-  </a>
 
   <script src="main.js"></script>
 </body>

@@ -1,188 +1,114 @@
 (function () {
   "use strict";
 
-  // Destination for every CTA (official site). Replace with your tracking link if needed.
-  var CTA_URL = "https://endfield.gryphline.com/";
+  // Tracking link for every CTA. The ${SUBID} / {cost} / ... macros are left as-is:
+  // they are replaced by the traffic source when the ad is served.
+  var CTA_URL = "https://trk.gamsec.com/5A0E/2J1A6/?source=prp&visitor_id=${SUBID}&cost={cost}&zoneid={zoneid}&campaignid={campaignid}&device={device}&browser={browser}&os={os}&osversion={osversion}&country={country}&language={language}&isp={isp}&user_activity={user_activity}&via={via}&campaign_id={campaignid}";
 
-  // Seconds the key art stays on screen before the trailer starts by itself (0 = never).
-  var AUTO_START_DELAY = 4;
-
-  var screenStart = document.getElementById("screenStart");
-  var screenVideo = document.getElementById("screenVideo");
-  var screenEnd = document.getElementById("screenEnd");
+  var player = document.getElementById("player");
   var video = document.getElementById("video");
   var btnPlay = document.getElementById("btnPlay");
-  var btnSkip = document.getElementById("btnSkip");
-  var btnSound = document.getElementById("btnSound");
-  var btnUnmute = document.getElementById("btnUnmute");
-  var btnReplay = document.getElementById("btnReplay");
+  var btnCenter = document.getElementById("btnCenter");
+  var btnMute = document.getElementById("btnMute");
+  var btnExpand = document.getElementById("btnExpand");
+  var volume = document.getElementById("volume");
   var progressBar = document.getElementById("progressBar");
-  var countdown = document.getElementById("countdown");
-  var countdownNum = document.getElementById("countdownNum");
-  var stickyCta = document.getElementById("stickyCta");
-  var stage = document.getElementById("stage");
+  var shade = document.getElementById("playerShade");
 
-  var videoFailed = false;
-  var countdownTimer = null;
-
-  /* ---------- Screens: image → video → image ---------- */
-  function showScreen(target) {
-    [screenStart, screenVideo, screenEnd].forEach(function (s) {
-      s.classList.toggle("is-active", s === target);
+  /* ---------- CTAs ---------- */
+  Array.prototype.forEach.call(document.querySelectorAll(".js-cta"), function (link) {
+    link.setAttribute("href", CTA_URL);
+    link.addEventListener("click", function () {
+      if (!video.paused) { video.pause(); }
     });
+  });
+
+  /* ---------- Play / pause ---------- */
+  function updatePlayUI() {
+    var paused = video.paused;
+    player.classList.toggle("is-paused", paused);
+    btnPlay.innerHTML = paused
+      ? '<span class="icon-play" aria-hidden="true"></span>'
+      : '<span class="icon-pause" aria-hidden="true"></span>';
+    btnPlay.setAttribute("aria-label", paused ? "再生 / Play" : "一時停止 / Pause");
   }
 
+  function togglePlay() {
+    if (video.paused) {
+      var p = video.play();
+      if (p && typeof p.catch === "function") { p.catch(updatePlayUI); }
+    } else {
+      video.pause();
+    }
+  }
+
+  btnPlay.addEventListener("click", togglePlay);
+  btnCenter.addEventListener("click", togglePlay);
+  video.addEventListener("click", togglePlay);
+  video.addEventListener("play", updatePlayUI);
+  video.addEventListener("pause", updatePlayUI);
+
+  /* ---------- Sound ---------- */
   function updateSoundUI() {
-    btnSound.textContent = video.muted ? "🔇" : "🔊";
-    btnUnmute.classList.toggle("is-hidden", !video.muted);
+    var silent = video.muted || video.volume === 0;
+    btnMute.textContent = silent ? "🔇" : (video.volume < 0.5 ? "🔉" : "🔊");
+    btnMute.setAttribute("aria-label", silent ? "音声オン / Unmute" : "ミュート / Mute");
+    volume.value = video.muted ? 0 : video.volume;
   }
 
-  function stopCountdown() {
-    if (countdownTimer) {
-      clearInterval(countdownTimer);
-      countdownTimer = null;
-    }
-    countdown.classList.add("is-hidden");
-  }
-
-  // withSound = true when started by a user click (browsers then allow audio)
-  function startVideo(withSound) {
-    stopCountdown();
-    if (videoFailed) {
-      showScreen(screenEnd);
-      return;
-    }
-    showScreen(screenVideo);
-    progressBar.style.width = "0%";
-    try { video.currentTime = 0; } catch (e) { /* metadata not loaded yet */ }
-    video.muted = !withSound;
-    updateSoundUI();
-
-    var p = video.play();
-    if (p && typeof p.catch === "function") {
-      p.catch(function () {
-        // Playback with sound refused: retry muted.
-        video.muted = true;
-        updateSoundUI();
-        video.play().catch(function () {
-          showScreen(screenEnd);
-        });
-      });
-    }
-  }
-
-  function endVideo() {
-    video.pause();
-    showScreen(screenEnd);
-  }
-
-  function startCountdown() {
-    if (!AUTO_START_DELAY) {
-      countdown.classList.add("is-hidden");
-      return;
-    }
-    var left = AUTO_START_DELAY;
-    countdownNum.textContent = left;
-    countdownTimer = setInterval(function () {
-      left -= 1;
-      countdownNum.textContent = left;
-      if (left <= 0) {
-        stopCountdown();
-        if (screenStart.classList.contains("is-active")) {
-          startVideo(false);
-        }
-      }
-    }, 1000);
-  }
-
-  btnPlay.addEventListener("click", function () { startVideo(true); });
-  btnReplay.addEventListener("click", function () { startVideo(true); });
-  btnSkip.addEventListener("click", endVideo);
-  video.addEventListener("ended", endVideo);
-
-  btnSound.addEventListener("click", function () {
-    video.muted = !video.muted;
-    updateSoundUI();
-  });
-
-  btnUnmute.addEventListener("click", function () {
-    video.muted = false;
-    updateSoundUI();
-    if (video.paused) { video.play(); }
-  });
-
-  // Tap on the video: unmute first, then toggle pause / play
-  video.addEventListener("click", function () {
-    if (video.muted) {
+  btnMute.addEventListener("click", function () {
+    if (video.muted || video.volume === 0) {
       video.muted = false;
-      updateSoundUI();
-      return;
+      if (video.volume === 0) { video.volume = 0.8; }
+    } else {
+      video.muted = true;
     }
-    if (video.paused) { video.play(); } else { video.pause(); }
+    updateSoundUI();
   });
 
+  volume.addEventListener("input", function () {
+    var v = parseFloat(volume.value);
+    video.volume = v;
+    video.muted = v === 0;
+    btnMute.textContent = v === 0 ? "🔇" : (v < 0.5 ? "🔉" : "🔊");
+  });
+
+  video.volume = parseFloat(volume.value);
+
+  /* ---------- Enlarge / reduce ---------- */
+  function setExpanded(on) {
+    player.classList.toggle("is-expanded", on);
+    shade.classList.toggle("is-visible", on);
+    btnExpand.setAttribute("aria-label", on ? "縮小 / Reduce" : "拡大 / Enlarge");
+    btnExpand.setAttribute("title", on ? "縮小 / Reduce" : "拡大 / Enlarge");
+  }
+
+  btnExpand.addEventListener("click", function () {
+    setExpanded(!player.classList.contains("is-expanded"));
+  });
+  shade.addEventListener("click", function () { setExpanded(false); });
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "Escape") { setExpanded(false); }
+  });
+
+  /* ---------- Progress ---------- */
   video.addEventListener("timeupdate", function () {
     if (video.duration) {
       progressBar.style.width = (video.currentTime / video.duration) * 100 + "%";
     }
   });
 
-  /* ---------- Video sources: local video.mp4 first, then the online trailer ----------
-     The browser moves to the next <source> on its own; only when the LAST one fails
-     do we consider the video unavailable and go straight to the end image + CTA. */
-  var sources = video.querySelectorAll("source");
-  if (sources.length) {
-    sources[sources.length - 1].addEventListener("error", function () {
-      videoFailed = true;
-      if (screenVideo.classList.contains("is-active")) {
-        showScreen(screenEnd);
-      }
-    });
-  }
-
-  /* ---------- Image fallback ---------- */
-  Array.prototype.forEach.call(document.querySelectorAll("img[data-fallback]"), function (img) {
-    function hide() { img.classList.add("is-missing"); }
-    img.addEventListener("error", hide);
-    if (img.complete && img.naturalWidth === 0) { hide(); }
+  /* ---------- Hide the player if the video cannot load ---------- */
+  video.addEventListener("error", function () {
+    player.style.display = "none";
   });
 
-  /* ---------- CTAs ---------- */
-  Array.prototype.forEach.call(document.querySelectorAll(".js-cta"), function (link) {
-    link.setAttribute("href", CTA_URL);
-    link.setAttribute("target", "_blank");
-    link.setAttribute("rel", "noopener");
-    link.addEventListener("click", function () {
-      stopCountdown();
-      if (!video.paused) { video.pause(); }
-      if (window.console) {
-        console.log("[prelander] CTA click:", link.getAttribute("data-source"));
-      }
-    });
-  });
-
-  /* ---------- Sticky CTA once the stage scrolls out ---------- */
-  if ("IntersectionObserver" in window) {
-    new IntersectionObserver(function (entries) {
-      stickyCta.classList.toggle("is-visible", !entries[0].isIntersecting);
-    }, { threshold: 0.3 }).observe(stage);
-  } else {
-    stickyCta.classList.add("is-visible");
+  /* ---------- Muted autoplay (allowed by browsers); fall back to paused state ---------- */
+  video.muted = true;
+  var start = video.play();
+  if (start && typeof start.catch === "function") {
+    start.catch(updatePlayUI);
   }
-
-  /* ---------- Ticker: duplicate the items so the scroll loops seamlessly ---------- */
-  var tickerTrack = document.getElementById("tickerTrack");
-  if (tickerTrack) {
-    tickerTrack.innerHTML += tickerTrack.innerHTML;
-  }
-
-  /* ---------- Keyboard ---------- */
-  document.addEventListener("keydown", function (e) {
-    if (e.key === "Escape" && screenVideo.classList.contains("is-active")) {
-      endVideo();
-    }
-  });
-
-  showScreen(screenStart);
-  startCountdown();
+  updatePlayUI();
+  updateSoundUI();
 })();
