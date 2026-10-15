@@ -125,10 +125,10 @@ button { font: inherit; cursor: pointer; }
    The artwork is 1365x768; its banner sits at x 345→1035, y 677→730.  */
 .img-cta {
   position: absolute;
-  left: 24.6%;
-  top: 87.6%;
-  width: 50.8%;
-  height: 8%;
+  left: 21%;
+  top: 84.5%;
+  width: 58%;
+  height: 11.5%;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -137,7 +137,7 @@ button { font: inherit; cursor: pointer; }
   background: linear-gradient(180deg, #2a2c30, #121315);
   border: 2px solid var(--gold-light);
   color: #fff;
-  font-size: clamp(9px, 2.2cqw, 24px);
+  font-size: clamp(10px, 2.7cqw, 32px);
   font-weight: 800;
   letter-spacing: 0.04em;
   white-space: nowrap;
@@ -164,10 +164,10 @@ button { font: inherit; cursor: pointer; }
 .screen--end::after {
   content: "";
   position: absolute;
-  left: 23.5%;
-  top: 85.8%;
-  width: 53%;
-  height: 11.6%;
+  left: 20%;
+  top: 82.8%;
+  width: 60%;
+  height: 15%;
   border-radius: 6px;
   box-shadow: 0 0 0 0 rgba(242, 210, 122, 0.9);
   animation: ring 1s ease-out infinite;
@@ -453,8 +453,7 @@ button { font: inherit; cursor: pointer; }
   .sticky-cta { display: flex; }
   .topbar__cta { display: none; }
   .cta { width: 100%; }
-  .img-cta__sep,
-  .img-cta__ja { display: none; } /* keep the in-image CTA readable on small screens */
+  .img-cta { gap: 0.4em; padding: 0 0.8em; }
   /* icon-only buttons so they don't cover the artwork's title */
   .play-btn { padding: 0.3em; font-size: 12px; left: 2%; }
   .play-btn__label { display: none; }
